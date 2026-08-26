@@ -2,7 +2,7 @@ import math
 import random
 
 #osa 1
-"""
+
 pituus = int(input("Kerro kuhan pituus senttimetreinä: "))
 
 if pituus < 37:
@@ -38,7 +38,7 @@ else :
     print("sudokun paikka")
 
 #OSA 4
-"""
+
 Vuosi = int(input("Mikä vuosi?: "))
 
 if Vuosi % 400 == 0:
