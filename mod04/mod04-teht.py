@@ -10,9 +10,9 @@ if pituus < 37:
 
 elif pituus >= 37:
     print("nauti kuhastasi")
-"""
+
 #osa 2
-"""
+
 hytti = input("Mistä hytti luokasta haluat tietää?: ")
 
 if hytti == "A":
@@ -25,12 +25,23 @@ elif hytti == "LUX":
     print("LUX on parvekkeellinen hytti yläkannella.")
 else :
     print("Virheellinen hytti luokka")
-"""
+
 #Osa 3
+sukupuoli = (input("sex?: "))
+hemoarvo = int(input("hemoarvosi "))
 
-sukupuoli = input("sex: ")
-hemoarvo = input("hemoarvosi: ")
+if sukupuoli == "N" and hemoarvo >=117 and hemoarvo <= 177:
+    print("olet ok")
+if sukupuoli == "M" and hemoarvo >=134 and hemoarvo <= 195:
+    print("olet ok")
+else : 
+    print("sudokun paikka")
+"""
+#OSA 4
 
-if sukupuoli == "N" and (hemoarvo <= 117 or >= 175):
-    print("hemoarvosi on normaali")
+Vuosi = int(input("Mikä vuosi?: "))
+
+if Vuosi % 4 = 0
+    print("Vuosi on karkausvuosi")
+else print("haista kakke")
 
