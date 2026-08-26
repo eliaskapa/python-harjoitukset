@@ -24,8 +24,25 @@ piiri = 2 * (A + B)
 
 print(f'suorakulmion piiri on: {piiri:.2f} ja pinta-ala {(A * B):3f}')
 """
-#tehtävä 5
+#tehtävä 4
 
+pituus = int(input("Kerro kuhan pituus senttimetreinä: "))
+
+if pituus < 37:
+    print("Heitä se taisin järveen")
+
+elif pituus >= 37:
+    print("nauti kuhastasi")
+
+
+
+print()
+
+
+
+
+#tehtävä 5
+"""
 leiviskä_lkm = float(input("anna leivisköjen määrä "))
 naulat_lkm = float(input("anna naulojen määrä "))
 luodit_lkm = float(input("anna luotien määrä "))
@@ -41,7 +58,7 @@ print(f"massa nykymittojen mukaan: {massa_g // 1000:.0f} kiloa ja {massa_g % 100
 
 
 #tehtävä 6
-"""
+
 luku = random.randint(0,9)
 luku2 = random.randint(,9)
 luku3 = random.randint(0,9)
