@@ -41,7 +41,8 @@ else :
 
 Vuosi = int(input("Mikä vuosi?: "))
 
-if Vuosi % 4 = 0
+if Vuosi % 4 == 0
     print("Vuosi on karkausvuosi")
-else print("haista kakke")
+else :
+    print("haista kakke")
 
