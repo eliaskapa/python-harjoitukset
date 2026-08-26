@@ -1,31 +1,31 @@
 import math
 
-#teksti = "tämä on laskukone, anna kaksi lukua"
+teksti = "tämä on laskukone, anna kaksi lukua"
 
-#print(teksti)
+print(teksti)
 
-#luku = input("anna 1. luku ")
-#luku2 = input("anna 2. luku ")
+luku = input("anna 1. luku ")
+luku2 = input("anna 2. luku ")
 
-#luku = float(luku)
-#luku2 = float(luku2)
+luku = float(luku)
+luku2 = float(luku2)
 
-#summa = float(luku) + float(luku2)
+summa = float(luku) + float(luku2)
 
-#summa = str(summa)
-#print("summa:"+ summa_str)
+summa = str(summa)
+print("summa:"+ summa_str)
 
-#print("lukujen " + str(luku) + " ja " + str(luku2) + " summa on " + summa + ".")
+print("lukujen " + str(luku) + " ja " + str(luku2) + " summa on " + summa + ".")
 
-#ikä = 25 
+ikä = 25 
 
-#uusi_kayttaja = input('anna nimesi: ')
+uusi_kayttaja = input('anna nimesi: ')
 
-#print('Shalom hieno herra, '+ uusi_kayttaja + '!')
+print('Shalom hieno herra, '+ uusi_kayttaja + '!')
 
-#print ('hauska tavata {uusi_käyttäjä}')
-#print (f'Hauska tavata{uusi_kayttaja} ja ikäni on {ikä}!!!!!!')
-'''
+print ('hauska tavata {uusi_käyttäjä}')
+print (f'Hauska tavata{uusi_kayttaja} ja ikäni on {ikä}!!!!!!')
+
 pisteet = 200
 pisteet = 400 #muuttujia ylikirjoitetaan
 print (pisteet)
@@ -52,15 +52,15 @@ print ("muuttujan tyyppi voidaan tutkia {type(kompleksiluku)}")
 print (f"{"vakio":8s}|{"arvo":<20s}")
 print ("---------------")
 print (f"{"pii":6s}:{math.pi:6.2f}")
-'''
 
-tuloste = '''
+
+tuloste = 
 yhteenlasku (+), vähennyslasku (-)
 kertolasku (*) ja jakolasku (/)
 jakojäännösoperaatio (%)
 pelkän kokonaisosan palauttava jakolasku (//)
 potenssiinkorotus (**).
-'''
+
 print (tuloste)
 
 #laskukone
