@@ -2,7 +2,7 @@ import math
 import random
 
 #osa 1
-""""
+
 pituus = int(input("Kerro kuhan pituus senttimetreinä: "))
 
 if pituus < 37:
@@ -36,12 +36,12 @@ if sukupuoli == "M" and hemoarvo >=134 and hemoarvo <= 195:
     print("olet ok")
 else : 
     print("sudokun paikka")
-"""
+
 #OSA 4
 
 Vuosi = int(input("Mikä vuosi?: "))
 
-if Vuosi % 4 == 0
+if Vuosi % 4 == 0:
     print("Vuosi on karkausvuosi")
 else :
     print("haista kakke")
