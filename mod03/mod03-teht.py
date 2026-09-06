@@ -56,7 +56,6 @@ massa_g = luodit_lkm * 13.3
 
 print(f"massa nykymittojen mukaan: {massa_g // 1000:.0f} kiloa ja {massa_g % 1000:.2f} grammaa. ")
 
-
 #tehtävä 6
 
 luku = random.randint(0,9)
