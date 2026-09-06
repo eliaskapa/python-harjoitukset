@@ -33,12 +33,40 @@ if len(luvut) > 0:
 else:
     print("ei ollut lukua")
 
-"""
+
 #tehtävä 4
 
 oikea_luku = random.randint(1,10)
 
-arvaus = int(input("arvaa numero 1-10: "))
+while True:
+    arvaus = int(input("arvaa numero 1-10: "))
+    if oikea_luku > arvaus:
+        print("ali")
+    if oikea_luku < arvaus:
+        print("yli")
+    if oikea_luku == arvaus:
+        print("oikea arvaus")
+        break
+"""
+#tehtävä 5
+
+User = "python"
+PW = "rules"
+k_yritys = 0
+
+while k_yritys <= 5:
+    User_Y = input("anna käyttäjä: ")
+    PW_Y = input("anna salis: ")
+
+    if User_Y == User and PW_Y == PW:
+        print("tervetuloa")
+        break
+    k_yritys += 1
+if k_yritys == 6:
+    print("pääsy evätty")
+
+#tehtävä 6
+
 
 
 
