@@ -54,7 +54,7 @@ print("ka on: ", ka)
 
 print("tulo on: ", tulo)
 
-
+#tehtävä 5
 
 leiviskät_m = float(input("anna leiviskät "))
 naulat_m = float(input("anna naulat "))
@@ -72,4 +72,10 @@ grammat = grammat % 1000
 print(f"paino on {kilot:.0f} kiloa ja {grammat:.1f} grammaa")
 
 """
+# tehtävä 6
 
+num1 = random.randint(1,9)
+num2 = random.randint(1,9)
+num3 = random.randint(1,9)
+
+print(num1, num2, num3)

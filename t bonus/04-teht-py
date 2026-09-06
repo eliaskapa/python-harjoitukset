@@ -1,0 +1,59 @@
+import math
+#tehtävä 1
+"""
+koko = (int(input("kerro kalan pituus sentteinä: ")))
+if koko <= 37:
+    print("heitä jorpakkoon")
+else :
+    print("nauti kalasta")
+
+#tehtävä 2
+
+hytti_luokka = input("Mistä hytti luokasta haluat tietää? ")
+
+LUX = ("LUX on parvekkeellinen hytti yläkannella.")
+A = ("A on ikkunallinen hytti autokannen yläpuolella.")
+B = ("B on ikkunaton hytti autokannen yläpuolella.")
+C = ("C on ikkunaton hytti autokannen alapuolella.")
+
+if hytti_luokka == "LUX":
+    print("LUX on parvekkeellinen hytti yläkannella.")
+if hytti_luokka == "A":
+    print("A on ikkunallinen hytti autokannen yläpuolella.")
+elif hytti_luokka == "B":
+    print("B on ikkunaton hytti autokannen yläpuolella.")
+elif hytti_luokka == "C" :
+    print("C on ikkunaton hytti autokannen alapuolella.")
+
+#if input("Mistä hytti luokasta haluat tietää? ") == LUX :
+    #print("LUX on parvekkeellinen hytti yläkannella.")
+else : 
+    print("virheellinen hyttiluokka")
+
+sex = input("sukupuolesi (N tai M): ")
+hemo = int(input("kerro hemo arvosi: "))
+
+if sex == "N" and hemo >=117 and hemo <=176:
+    print("oot ok")
+if sex == "M" and hemo >=134 and hemo <=195:
+    print("oot ok mies")
+else :
+    print("oi voi")
+
+
+#tehtävä 4
+
+vuosi = int(input("mikä vuosi?: "))
+
+if vuosi % 400 ==0:
+    print("On karkausvuosi")
+elif vuosi % 100 ==0:
+    print("ei ole karkausvuosi")
+elif vuosi % 4 ==0:
+    print("on karkausvuosi")
+else :
+    print("eipä ollu")
+"""
+
+
+
