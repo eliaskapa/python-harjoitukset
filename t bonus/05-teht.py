@@ -83,7 +83,9 @@ while counter < N:
 piin_likiarvo = 4 * n / N
 print(f"piin likiarvo on noin {piin_likiarvo}")
 """
-osdsds
+
+
+
 
 
 
