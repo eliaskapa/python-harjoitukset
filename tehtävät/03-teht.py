@@ -2,7 +2,7 @@ import math
 import random
 
 #tehtävä 1
-"""
+
 nimesi = input("kerro nimesi: ")
 
 print(f"terve {nimesi}")
@@ -71,7 +71,6 @@ grammat = grammat % 1000
 
 print(f"paino on {kilot:.0f} kiloa ja {grammat:.1f} grammaa")
 
-"""
 # tehtävä 6
 
 num1 = random.randint(1,9)

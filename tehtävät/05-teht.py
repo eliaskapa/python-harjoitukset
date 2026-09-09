@@ -1,6 +1,6 @@
 import math
 import random
-"""
+
 luku = 1
 while luku <= 1000:
     if luku % 3 == 0:
@@ -82,7 +82,7 @@ while counter < N:
 
 piin_likiarvo = 4 * n / N
 print(f"piin likiarvo on noin {piin_likiarvo}")
-"""
+
 
 
 

@@ -6,14 +6,14 @@ def do_nothing(): #suluilla merkataan funktio
     pass
 
 do_nothing()
-"""
+
 def print_list_of_numbers(): #kutsu funktio ja pitää olla sulkeet jotta voi kutsua
     print(1)
     print(2)
     print(3)
 
 print_list_of_numbers()
-"""
+
 # Funktion parametrit (argumentit) ovat muuttujia, joiden arvot on käytössä
 # funktion sisällä, ja  joille syötetään arvot funktiota kutsuttaessa
 
@@ -50,3 +50,39 @@ print(create_list_of_numbers(3, 7))
 
 list_of_numbers = create_list_of_numbers(11, 16)
 #print(list_of_numbers)
+
+#lista parametrinä (ks. materiaali)
+
+def inventaario(tavarat):
+    print("sinulla on seuraavat tavarat:")
+    for t in tavarat:
+        print("- " + t)
+    # tavarat katoavat inventaariossa
+    tavarat.clear()
+    return
+
+reppu = ["vesipullo", "kartta", "kompassi"]
+inventaario(reppu)
+reppu.append("linkkuveitsi")
+inventaario(reppu)
+
+### primitiiviarvoilla alkuperäinen (pääohjelman b) arvo ei muutu
+
+def tulosta_luku(a):
+    print(a)
+    a = 0
+
+b = 3
+tulosta_luku(b)
+tulosta_luku(b)
+
+print()
+
+def summa(*luvut):
+    print("syötetyt arvot: ", luvut)
+    s = 0
+    for l in luvut:
+        s += l
+    return s
+
+print("summa on", summa(1, 1, 1, 1, 1))
