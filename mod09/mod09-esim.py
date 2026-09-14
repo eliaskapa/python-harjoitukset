@@ -31,7 +31,8 @@ print("ensimmäinsen koiran", koira.rotu)
 
 print("toisen koiran", koira.nimi)
 print("toisen koiran", koira.rotu)
-"""
+
+
 
 #teimme juuri luokan Koira ilman ominaisuuksia
 #tämän jälkeen määrittelemme ominaisuudet yksi kerrallaan = työlästä
@@ -78,3 +79,10 @@ koira2.hauku(2)
 koira3.hauku(3)
 
 Koira.tehty
+
+"""
+
+inventaario = {"hakku", "kokis"}
+inventaario2 = {"hakku", "kokis"}
+
+class player
