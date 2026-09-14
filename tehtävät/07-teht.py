@@ -101,7 +101,7 @@ while True:
     if noppa == 6:
         print("loppu")
         break
-"""
+
 tahko = int(input("anna tahkot"))
 def noppapeli():
     return random.randint(1, tahko)
@@ -113,7 +113,33 @@ while True:
         print("loppu")
         break
 
-def ()
+
+def bensa(gallonat):
+    litra = gallonat * 3.78
+    return litra
+
+while True: 
+    määrä = float(input("gallona määrä: "))
+    if määrä < 0:
+        break
+
+litrat = bensa(määrä)
+print(litrat)
+"""
+def bensa(gallonat):
+    litra = gallonat * 3.785  
+    return litra
+
+while True: 
+    määrä = float(input("gallona määrä: "))
+    if määrä < 0:
+        break
+
+    # Korjaus 2: Nämä rivit pitää sisentää (siirtää sisäänpäin), 
+    # jotta ne suoritetaan silmukan sisällä joka kierroksella.
+    litrat = bensa(määrä)
+    print(litrat)
+
 
 
 
