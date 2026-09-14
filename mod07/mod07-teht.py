@@ -56,6 +56,7 @@ def calculate_unit_price(diamater_in_cm, price):
     return price / area
 
 unit_prices = []
+
 for pizza_number in range(2):
     diameter = float(input(f"anna {pizza_number+1} pitsan halkaisija (cm): "))
     price = float(input(f"anna {pizza_number+1} pitsan hinta (euro):"))
@@ -71,4 +72,3 @@ else:
     print("pitsat ovat saman hintaisia")
 
 # TODO EXTRA: miten kehittää ohjelmaa niin, että se toimii N määrällä pitsoja. 
-#
