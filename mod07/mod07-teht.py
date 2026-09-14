@@ -52,8 +52,23 @@ def calculate_unit_price(diamater_in_cm, price):
     # pinta-ala: pi * r*r
     r = diamater_in_cm/100/2
     area = math.pi * r**2
-    print(area)
     # eur/m2
-    return
+    return price / area
 
-calculate_unit_price(100, 10)
+unit_prices = []
+for pizza_number in range(2):
+    diameter = float(input(f"anna {pizza_number+1} pitsan halkaisija (cm): "))
+    price = float(input(f"anna {pizza_number+1} pitsan hinta (euro):"))
+    unit_price = calculate_unit_price(diameter, price)
+    unit_prices.append(calculate_unit_price(diameter, price))
+    print(f" {pizza_number+1} pitsan yksikkö hinta (euro/m2): {unit_prices[pizza_number]:0.2f}")
+
+if unit_prices[0] < unit_prices[1]:
+    print("esimmäinen pitsa on halvempi.")
+elif unit_prices[1] < unit_prices[0]:
+    print("toinen pitsa on halvempi.")
+else: 
+    print("pitsat ovat saman hintaisia")
+
+# TODO EXTRA: miten kehittää ohjelmaa niin, että se toimii N määrällä pitsoja. 
+#
