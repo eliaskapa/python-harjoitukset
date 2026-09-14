@@ -1,7 +1,7 @@
 import random
 
 #tehtävä 1 "Kirjoita ohjelma, joka kysyy käyttäjältä arpakuutioiden lukumäärän. Ohjelma heittää kerran kaikkia arpakuutioita ja tulostaa silmälukujen summan. Käytä for-toistorakennetta."
-
+"""
 määrä = int(input("anna arpakuutioiden määrä: "))
 
 summa = 0
@@ -64,5 +64,27 @@ for kaupunki in K_lista:
 
 #for k_lista in range (5):
     #print(k_lista)
+
+
+noppapeli = int(input("kuinka monta noppaa heitetään"))
+
+for i in range(noppapeli):
+    i = random.randint(1,6)
+    print(i)
+"""
+
+luvut = []
+
+while True:
+    luku = input("anna luku")
+    if luku == "":
+        break
+    luvut.append(luku)
+
+luvut.sort(reverse=True)
+
+for luku in luvut[:5]:
+    print(luku)
+
 
 

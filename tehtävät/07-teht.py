@@ -68,7 +68,7 @@ print(f"normaali lista: {lista1}")
 
 print(f"uusi lista: {lista2}")
 
-#tehtävä 6 """
+#tehtävä 6 
 
 def yksikköhinturi(kokocm, hinta):
     r = kokocm / 100 / 2
@@ -92,7 +92,28 @@ yksikköhinnat.index(min(yksikköhinnat))
 
 
 
+def noppapeli():
+    return random.randint(1,6)
 
+while True:
+    noppa = noppapeli()
+    print(noppa)
+    if noppa == 6:
+        print("loppu")
+        break
+"""
+tahko = int(input("anna tahkot"))
+def noppapeli():
+    return random.randint(1, tahko)
+
+while True:
+    noppa = noppapeli()
+    print(noppa)
+    if noppa == tahko:
+        print("loppu")
+        break
+
+def ()
 
 
 
