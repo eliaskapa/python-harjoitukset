@@ -1,6 +1,6 @@
 import math
 #tehtävä 1
-"""
+
 koko = (int(input("kerro kalan pituus sentteinä: ")))
 if koko <= 37:
     print("heitä jorpakkoon")
@@ -53,7 +53,7 @@ elif vuosi % 4 ==0:
     print("on karkausvuosi")
 else :
     print("eipä ollu")
-"""
+
 
 
 

@@ -1,6 +1,6 @@
 import math
 import random
-"""
+
 suorita = True
 
 while suorita:
@@ -91,7 +91,7 @@ while luku <= 1000:
         print(luku)
     luku += 1
     
-"""
+
 # tehtävä 4 modattuna (tee tehtävä loppuun)
 oikea_numero = 7
 arvaus = int(input("arvaa numero 1-10: "))
@@ -106,7 +106,7 @@ print (f"oikea numero oli tosiaan {oikea_numero}")
 
 #usein while rakenttetta käytettään ja varsinkin teidän projeceteissa!!
 # ns. pääsilmukka eli main loop
-"""
+
 peli_käynnistyy = True
 #main loop
 while peli_käynnistyy:
@@ -117,4 +117,3 @@ while peli_käynnistyy:
         print("jatkoit peliä")
     if valinta == "l":
         peli_käynnistyy = False
-"""
