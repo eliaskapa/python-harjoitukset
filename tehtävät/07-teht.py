@@ -114,36 +114,18 @@ while True:
         break
 
 
-def bensa(gallonat):
-    litra = gallonat * 3.78
-    return litra
+def kokolista(luvut):
+    parittomat = []
+    for i in luvut:
+        if i % 2 == 0:
+            parittomat.append(i)
+    return parittomat
 
-while True: 
-    määrä = float(input("gallona määrä: "))
-    if määrä < 0:
-        break
+kaikki_lista = [1,2,3,4,5,6]
 
-litrat = bensa(määrä)
-print(litrat)
+parilliset_lista = kokolista(kaikki_lista)
+
+print(kaikki_lista)
+print(parilliset_lista)
 """
-def bensa(gallonat):
-    litra = gallonat * 3.785  
-    return litra
-
-while True: 
-    määrä = float(input("gallona määrä: "))
-    if määrä < 0:
-        break
-
-    # Korjaus 2: Nämä rivit pitää sisentää (siirtää sisäänpäin), 
-    # jotta ne suoritetaan silmukan sisällä joka kierroksella.
-    litrat = bensa(määrä)
-    print(litrat)
-
-
-
-
-
-
-
 
