@@ -47,3 +47,5 @@ while True:
         break
 
 print(lentoasema)
+
+if lentoasema not in 
