@@ -26,3 +26,43 @@ Lehti.tulosta_tiedot(Aku)
 Kirja.tulosta_tiedot(Hytti)
 """
 
+class Auto:
+    def __init__ (self, rekisterinumero, huippunopeus):
+        self.rekisterinumero = rekisterinumero
+        self.huippunopeus = huippunopeus
+        self.nopeus =  0
+        self.kuljettu_matka = 0
+
+    def kiihdytä(self, muutos):
+        self.nopeus += muutos
+        if self.nopeus > self.huippunopeus:
+            self.nopeus = self.huippunopeus
+        if self.nopeus < 0:
+            self.nopeus = 0
+
+    def kulje(self, aika):
+        self.kuljettu_matka += aika * self.nopeus
+
+class Sähköauto(Auto):
+    def __init__(self, rekisterinumero, huippunopeus, akku,):
+        super().__init__(rekisterinumero, huippunopeus)
+        self.akku = akku
+
+class Polttomoottoriauto(Auto):
+    def __init__(self, rekisterinumero, huippunopeus, bensatankki):
+        super().__init__(rekisterinumero, huippunopeus)
+        self.bensatankki = bensatankki
+    
+Tesla = Sähköauto("ABC-123", 180, 52.5)
+Fiat = Polttomoottoriauto("ACD-123", 165, 32.3 )
+
+Tesla.kiihdytä(100)
+Fiat.kiihdytä(150)
+
+Tesla.kulje(3)
+Fiat.kulje(3)
+
+print(Tesla.kuljettu_matka)
+print(Fiat.kuljettu_matka)
+
+
