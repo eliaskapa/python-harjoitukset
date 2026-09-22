@@ -1,4 +1,4 @@
-class Julkaisu:
+"""class Julkaisu:
     def __init__(self, nimi):
         self.nimi = nimi
 
@@ -24,3 +24,5 @@ Hytti = Kirja("Hytti No6", "Rosa Liksom", "200")
 
 Lehti.tulosta_tiedot(Aku)
 Kirja.tulosta_tiedot(Hytti)
+"""
+
