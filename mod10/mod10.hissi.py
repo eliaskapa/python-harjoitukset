@@ -45,6 +45,9 @@ talo.aja_hissiä(1,7)
 talo.aja_hissiä(2,9)
 talo.palohälytys()
 
+
+
+
 """hissi1 = Hissi("Pääaula 1", 1, 12)
 hissi2 = Hissi("Henkilökunnan hissi", 5, 20)
 

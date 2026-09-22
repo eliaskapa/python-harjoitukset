@@ -3,13 +3,12 @@ class Hissi:
         self.ylin = kerros_ylös
         self.alin = kerros_alas
         self.siirry_kerrokseen = 1
-    def siirry_kerrokseen(self):
-        while siirry_kerrokseen < kerros_ylös:
-            siirry_kerrokseen += 1
-            print(self.siirry_kerrokseen)
-        while siirry_kerrokseen > kerros_alas:
-            siirry_kerrokseen -= 1
-            print(self.siirry_kerrokseen)
+    def siirry_kerrokseen(self, kohdekerros):
+        while siirry_kerrokseen < kohdekerros:
+            self.kerros_ylös()
+        while siirry_kerrokseen > kohdekerros:
+            self.kerros_alas()
+            
 
 
 hissi1 = Hissi(1,12)
