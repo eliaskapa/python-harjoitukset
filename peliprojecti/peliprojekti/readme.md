@@ -1,5 +1,6 @@
 ELias Lintula
 
-Ristinolla rpg
+Pvaras?
 
+rikollinen joka varastaa hommia ja pitää hallita kuinka paljon tavaraa ottaa kilojen ja tilavuuden mukaan?
 
