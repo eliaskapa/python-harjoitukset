@@ -38,7 +38,7 @@ while bensiinin_määrä(gallona) > 0:
         print("loppu")
 
 
-#tehtävä 4: Kirjoita funktio, joka saa parametrinaan listan kokonaislukuja. Ohjelma palauttaa listassa olevien lukujen summan. Kirjoita testausta varten pääohjelma, jossa luot listan, kutsut funktiota ja tulostat sen palauttaman summan.
+#tehtävä 4:
 
 
 def lista(numerot):

@@ -5,10 +5,10 @@ while ikä > 12:
     print()
     print(f"Tervetuloa {nimi}")
     print()
-    print("päävalikko:")
-    print(" aloita: ")
+    print(" päävalikko:")
+    print("  aloita: ")
     print(" komennot: ")
-    print(" lopeta: ")
+    print("  lopeta: ")
     komento = input("anna komento: ")
     if komento == "lopeta":
         print(" peli sammuu")
