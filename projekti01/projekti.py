@@ -24,7 +24,7 @@ kulta_harkko = Esine("kultaharkko", 250, 3, 30000)
 kengät = Esine("kengät", 250, 2, 20)
 #erikseen tehdään tietystä paikasta löytyvät esineet
 
-aula = huone("aula")
+aula = Huone("aula")
 
 
 #A siiven huoneet ("kuntoilu ja suihkutilat")
