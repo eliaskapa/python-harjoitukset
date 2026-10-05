@@ -20,10 +20,10 @@ Esine("vanha TV", 30000, 4),
 Esine("lompakko")
 
 ]
-#tehdään esineet joita talosta löytyy satunnaisesti
+#tehdään esineet joita talosta löytyy
 #paino grammoina
 kulta_harkko = Esine("kultaharkko", 2)
-#erikseen tehdään 
+#erikseen tehdään tietystä paikasta löytyvät esineet
 
 
 eteinen0 = Huone("eteinen")
