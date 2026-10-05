@@ -23,7 +23,6 @@ class Ilves(Eläin, Peto):
     def kaikki_tiedot(self):
         super().kaikki_tiedot()
     
-
 class Karhu(Eläin, Peto):
     def __init__(self, nimi, paino, syntymä_aika, on_horroksessa, on_metsästäjä):
         self.on_horroksessa = on_horroksessa
