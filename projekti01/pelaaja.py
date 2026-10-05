@@ -10,6 +10,3 @@ class Pelaaja:
     def nappaa_esine(self, esine):
         self.tavaraluettelo.append(esine)
         print(f"otit {esine.nimi}n ")
-        
-    def äänekkyys(self):
-        pass

@@ -17,7 +17,7 @@ Esine("vanha TV", 30000, 4, 20),
 Esine("älypuhelin", random.randint(200,300), random.randint(1,5), random.randint(10,330))
 ]
 
-#tehdään esineet joita talosta löytyy
+#tehdään esineet joita rakennuksesta löytyy
 #paino grammoina, äänekkys ja lopussa hinta euroina
 
 kulta_harkko = Esine("kultaharkko", 250, 3, 30000)
@@ -25,7 +25,6 @@ kengät = Esine("kengät", 250, 2, 20)
 #erikseen tehdään tietystä paikasta löytyvät esineet
 
 aula = Huone("aula")
-
 
 #A siiven huoneet ("kuntoilu ja suihkutilat")
 A_eteinen = Huone("Suuri eteinen")
@@ -36,7 +35,7 @@ suihkut = Huone("Suihkutila")
 B_eteinen = Huone("Keskikoinen eteinen")
 olohuone = Huone("B siiven olohuone")
 toimisto = Huone("B siiven toimisto")
-keittiö = Huone("keittiö")
+Kabinetti = Huone("Kabinetti")
 
 #C siiven huoneet ("asumis tila")
 C_eteinen = Huone("Pieni eteinen")
@@ -44,29 +43,29 @@ olohuone = Huone("C siiven olohuone")
 keittiö = Huone("keittiö")
 makuuhuone = Huone("makuuhuone")
 
-#huoneet
 
-kassakaappi = Varasto("kassakaappi", kulta_harkko)
-komero = Varasto("komero", kengät)
-#varastot jotka sijaitsee huoneissa
+
+kassakaappi = Varasto("kassakaappi", kulta_harkko) #B kabinetti
+komero = Varasto("komero", kengät) #C makkari
+#varastot jotka sijaitsee tietyissä huoneissa
 
 #A siipi
 A_eteinen.esine = random.choice(loot_pool)
-sali = random.choice(loot_pool)
-suihkut = random.choice(loot_pool)
+A_pukuhuone = random.choice(loot_pool)
+A_sali = random.choice(loot_pool)
 
 #B siipi
 B_eteinen.esine = random.choice(loot_pool)
-olohuone = random.choice(loot_pool)
-toimisto = random.choice(loot_pool)
-keittiö = random.choice(loot_pool)
-
+B_olohuone = random.choice(loot_pool)
+B_toimisto = random.choice(loot_pool)
+B_asunto = random.choice(loot_pool)
+B_kabinetti = random.choice(loot_pool)
 #C siipi
 
 C_eteinen.esine = random.choice(loot_pool)
-olohuone = random.choice(loot_pool)
-keittiö = random.choice(loot_pool)
-makuuhuone = random.choice(loot_pool)
+C_olohuone = random.choice(loot_pool)
+C_keittiö = random.choice(loot_pool)
+C_makuuhuone = random.choice(loot_pool)
 
 #Huone luokkalle annetaan parametreinä huoneille nimi ja niissä sisältävät esineet
 
@@ -106,10 +105,12 @@ def info():
     else:
         for esine in pelaaja.tavaraluettelo:
             print(esine.nimi)
+
         #luetellaan listan sisältö
         print(sum(esine.paino for esine in pelaaja.tavaraluettelo))
         print(sum(esine.ääni for esine in pelaaja.tavaraluettelo))
         #lasketaan yhteen esineiden paino ja ääni arvot
+
         if game_over == True:
             tulos = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
             #esineiden 
@@ -144,57 +145,93 @@ else:
 while game_running == True:
     if pelaaja.sijainti == "ulkona":
         print("tervetuloa pelaamaan Pvaras:ta")
-        print("olet ulkona ja edessäsi on suuri tiilistä noin 1960 rakennettu talo joka näyttää haarautuvan useisiin eri siipiin")
-        alku = print("haluatko mennä sisälle? y/n")
+        print("olet ulkona ja edessäsi on suuri tiilistä noin vuonna 1960 rakennettu talo joka näyttää haarautuvan useisiin eri siipiin")
+
+        alku = input("haluatko mennä sisälle? y/n: ")
         if alku == "n":
-            komento2 == "pakene"
+            print("ehkä tämä on kaikille parhaaksi")
+            break
+
         elif alku == "y":
             pelaaja.liiku(aula)
-            print(f"olet rakennuksen {pelaaja.sijainti}ssa. Edessä näkyy kolme siipeä, iso (A), keski (B) ja pieni (C), mihin niistä haluat tunkeutua? \n")
-            siipi = input()
+            print(f"olet rakennuksen {pelaaja.sijainti.nimi}ssa. Edessä näkyy kolme siipeä, iso (A), keski (B) ja pieni (C)\n")
+            print("valitse siipi mihin haluat mennä, A, B vai C? \n")
+            komento2 = input("anna komento: ")
 
             #A siipi
-            if siipi == "A":
+            if komento2== "A" and pelaaja.sijainti == aula:
+                pelaaja.liiku(A_eteinen)
                 print("saavuit A siipeen ja edessäsi on suuri aukea eteinen")
-                pelaaja.sijainti = A_eteinen
                 print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
-                print(pelaaja.sijainti.nimi)
+                print("joko liiku, nappaa esine, reppu, pakene \n")
+                #print(pelaaja.sijainti.nimi)
 
+            elif komento2 == "liiku" and pelaaja.sijainti == A_eteinen:
+                pelaaja.liiku(A_pukuhuone)
+                print("saavuit pukuhuoneeseen jossa on paljon vaatteita")
+                print("seuraavassa huoneessa kuuluu paljon ääntä ja mekkalaa")
+                print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+
+            elif komento2 == "liiku" and pelaaja.sijainti == A_pukuhuone:
+                pelaaja.liiku(A_sali)
+                
             #B siipi
-            elif siipi == "B":
+            elif komento2 == "B":
                 print("saavuit B siipeen ja edessäsi on normaali eteinen")
                 pelaaja.sijainti = B_eteinen
                 print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
                 print(pelaaja.sijainti.nimi)
+                print("joko liiku, nappaa esine, reppu, pakene tai kysy komentoja\n")
+
+            elif komento2 == "liiku" and pelaaja.sijainti == B_eteinen:
+                pelaaja.liiku(B_olohuone)
+                print("saavuit olohuoneeseen jossa on mukava sohva ja televisio")
+                print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+        
+            elif komento2 == "liiku" and pelaaja.sijainti == B_olohuone:
+                pelaaja.liiku(B_toimisto)
+                print("saavuit toimistoon jossa on paljon papereita ja tietokoneita")
+                print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+
+            elif komento2 == "liiku" and pelaaja.sijainti == B_toimisto:
+                pelaaja.liiku(B_kabinetti)
+                print("saavuit hienosti sisustettuun kabinettiin joka käy pienestä asunnosta")
+                print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
 
             #C siipi
-            elif siipi == "C":
+            elif komento2 == "C":
                 print("saavuit C siipeen ja edessäsi on pieni eteinen")
                 pelaaja.sijainti = C_eteinen
                 print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
                 print(pelaaja.sijainti.nimi)
-            else:
-                print("valintaa ei löydy")
+
+            elif komento2 == "komennot":
+                komennot()
+            
+            elif komento2 == "nappaa esine":
+                if pelaaja.sijainti != "ulkona" and pelaaja.sijainti.esine is not None:
+                    #katsotaan ettei pelaaja ole ulkona ja jottei huoneen esinettä ole jo otettu
+                    napattu_esine = pelaaja.sijainti.esine
         
-        print("joko liiku, nappaa esine, reppu, pakene \n")
+                    pelaaja.nappaa_esine(napattu_esine)
+                    #pelaaja luokasta olevalla funktiolla napattiin esine ja tallennettiin se tavaraluetteloon
+        
+                    pelaaja.sijainti.esine = None
+                    #poistetaan esine oton jälkeen
+                else:
+                    print("et löydä mitään mitä voisit ottaa tai se on jo otettu")
+            else:
+                            print("valintaa ei löydy")
+        elif komento2 == "reppu":
+            info()
 
-    komento2 = None
-    if komento2 == "liiku":
-        pass
+    elif komento2 == "pakene":
+            game_over = True
+            info()
+            print("pakenit paikalta")
+            break
+            #printataan kaikki tarvittavat tiedot ja jotta tulos toimisi niin game_over = True        
 
-    elif pelaaja.sijainti == makuuhuone:
-            print("viimeinen huone ja talon vanhat asukkaat heräävät kohta, voit ainoastaan paeta tai napata mitä voit")
-
-    elif komento2 == "nappaa esine":
-        if pelaaja.sijainti != "ulkona" and pelaaja.sijainti.esine is not None:
-        #katsotaan ettei pelaaja ole ulkona ja jottei huoneen esinettä ole jo otettu
-            napattu_esine = pelaaja.sijainti.esine
-            pelaaja.nappaa_esine(napattu_esine)
-            #pelaaja luokasta olevalla funktiolla napattiin esine ja tallennettiin se tavaraluetteloon
-            pelaaja.sijainti.esine = None
-            #poistetaan esine oton jälkeen
-        else:
-            print("et löydä mitään mitä voisit ottaa tai se on jo otettu")
     elif komento2 == "reppu":
             info()
 
@@ -203,12 +240,4 @@ while game_running == True:
             info()
             print("pakenit paikalta")
             break
-            #printataan kaikki tarvittavat tiedot ja jotta tulos toimisi niin game_over = True"""
-    else:
-        print("komentoa ei tunnistettu")
-    
-
-"""    if pelaaja.sijainti == "ulkona":
-            pelaaja.liiku(eteinen0)
-            print((f"saavuit huoneeseen {pelaaja.sijainti.nimi} ja huoneessa on {pelaaja.sijainti.esine.nimi}n\n"))
-            print("")"""
+            #printataan kaikki tarvittavat tiedot ja jotta tulos toimisi niin game_over = True
