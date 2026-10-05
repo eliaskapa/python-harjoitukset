@@ -6,3 +6,4 @@ class Esine:
         self.paino = paino
         self.ääni = ääni
 
+

@@ -1,28 +1,48 @@
 from pelaaja import Pelaaja
 from huone import Huone
 from esine import Esine
+import random
+
 
 p_nimi = input("kerro nimesi: ")
 ikä = int(input("kerro ikäsi: "))
 
-kello = Esine("Kulta kello", 1, 2)
-grani = Esine("graniitti", 15, 3)
-kirja = Esine("Vanha kirja", 4, 1)
-lompakko = Esine("Lompakko", 3, 4)
-tv = Esine("Vanha TV", 50, 4)
-#tehdään esineet joita talosta löytyy
+
+lootti_lista = [
+Esine("kulta kello", 150, 2),
+Esine("graniitti", 1500, 3),
+Esine("vanha kirja", 300, 1),
+Esine("lompakko", 400, 4),
+Esine("vanha TV", 30000, 4),
+Esine("lompakko")
+
+]
+#tehdään esineet joita talosta löytyy satunnaisesti
+#paino grammoina
+kulta_harkko = Esine("kultaharkko", 2)
+#erikseen tehdään 
 
 
+eteinen0 = Huone("eteinen")
+eteinen1 = Huone("Eteinen")
+eteinen2 = Huone("Eteinen")
 komero = Huone("komero", kirja)
 pesutupa = Huone("pesutupa",lompakko )
-olohuone = Huone("Olohuone", tv )
-eteinen = Huone("Eteinen", grani)
-makuuhuone = Huone("Makuuhuone", kello)
+olohuone = Huone("b siiven olohuone", tv )
+makuuhuone = Huone("makuuhuone", kello)
+keittiö = Huone("keittiö", )
+olohuone2 = Huone("a siiven olohuono")
+
+eteinen0.esine = random.choice(lootti_lista)
+eteinen1.esine = random.choice(lootti_lista)
 #Huone luokkalle annetaan parametreinä huoneille nimi ja niissä sisältävät esineet
 
 pelaaja = Pelaaja(p_nimi)
 #pelaajan nimi muuttuja lisätään Pelaaja luokkaan
 #pelaajalla on jo sijainti annettu parametrinä pelaaja luokassa
+
+
+
 
 def päävalikko():
     print(f"Tervetuloa {pelaaja.nimi} \n")
@@ -91,7 +111,7 @@ while game_running == True:
 
         if pelaaja.sijainti == "ulkona":
             pelaaja.liiku(eteinen)
-            print((f"saavuit huoneeseen {pelaaja.sijainti.nimi} ja näät {pelaaja.sijainti.esine.nimi}n\n"))
+            print((f"saavuit huoneeseen {pelaaja.sijainti.nimi} ja huoneessa on {pelaaja.sijainti.esine.nimi}n\n"))
             print("")
 
         elif pelaaja.sijainti == eteinen:
