@@ -26,11 +26,11 @@ kulta_harkko = Esine("kultaharkko", 2)
 eteinen0 = Huone("eteinen")
 eteinen1 = Huone("Eteinen")
 eteinen2 = Huone("Eteinen")
-komero = Huone("komero", kirja)
-pesutupa = Huone("pesutupa",lompakko )
-olohuone = Huone("b siiven olohuone", tv )
-makuuhuone = Huone("makuuhuone", kello)
-keittiö = Huone("keittiö", )
+komero = Huone("komero" )
+pesutupa = Huone("pesutupa")
+olohuone = Huone("b siiven olohuone")
+makuuhuone = Huone("makuuhuone")
+keittiö = Huone("keittiö")
 olohuone2 = Huone("a siiven olohuono")
 
 eteinen0.esine = random.choice(lootti_lista)
@@ -110,11 +110,11 @@ while game_running == True:
     if komento2 == "liiku":
 
         if pelaaja.sijainti == "ulkona":
-            pelaaja.liiku(eteinen)
+            pelaaja.liiku(eteinen0)
             print((f"saavuit huoneeseen {pelaaja.sijainti.nimi} ja huoneessa on {pelaaja.sijainti.esine.nimi}n\n"))
             print("")
 
-        elif pelaaja.sijainti == eteinen:
+        elif pelaaja.sijainti == eteinen0:
             pelaaja.liiku(makuuhuone)
             print((f"saavuit huoneeseen {pelaaja.sijainti.nimi} ja näät {pelaaja.sijainti.esine.nimi}n\n"))
 
