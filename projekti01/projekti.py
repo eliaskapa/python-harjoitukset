@@ -4,6 +4,9 @@ from esine import Esine
 import random
 
 
+#turha teksti git testi
+
+
 p_nimi = input("kerro nimesi: ")
 ikä = int(input("kerro ikäsi: "))
 
