@@ -8,13 +8,13 @@ class Player:
         self.pisteet += 1
         print("pisteitä on nyt", self.pisteet)
     def info(self):
-        print(f"Pelaajan ikä on {self.age} ja pisteet {self.points}")
+        print(f"Pelaajan ikä on {self.age} ja pisteet {self.pisteet}")
 
     def save_game(self):
         while True:
             try:
                 with open("mod13/save.txt", "w") as file:
-                    data = {"age": player.age, "points": player.points,}
+                    data = {"age": self.age, "points": self.pisteet,}
                     json.dump(data, file)
 
             except IOError:
