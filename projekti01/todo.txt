@@ -1,0 +1,11 @@
+pakene kertoo voititko vai et?
+
+eri loput A B ja C
+
+tallennus joka laskee onko kaikki loput tehty
+
+paino ja äänekkyys pitäisi lopettaa pelin liian aikaisin jos ylittävät tietyn määrn
+
+C siipi puuttuu
+
+lopussa tuotteiden arvo pitöisi laskea yhteen
