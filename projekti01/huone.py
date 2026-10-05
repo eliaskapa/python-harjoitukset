@@ -4,6 +4,12 @@ class Huone:
         self.nimi = nimi 
         self.esine = esine
 
+
+class Varasto(Huone):
+    def __init__(self, nimi, esine=None):
+        super().__init__(nimi, esine)
+    
+
         
         
 
