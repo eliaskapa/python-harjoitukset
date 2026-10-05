@@ -1,6 +1,6 @@
 class Pelaaja:
-    def __init__(self, nimi, tavaraluettelo, sijainti):
-        self.nimi =  nimi
+    def __init__(self, nimi, sijainti = "ulkona"):
+        self.nimi = nimi
         self.tavaraluettelo = []
         self.sijainti = sijainti
 
@@ -9,4 +9,7 @@ class Pelaaja:
 
     def nappaa_esine(self, esine):
         self.tavaraluettelo.append(esine)
-        print(f"{esine} lisättiin inventaarioon")
+        print(f"otit {esine.nimi}n ")
+        
+    def äänekkyys(self):
+        pass
