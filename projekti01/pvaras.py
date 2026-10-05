@@ -1,14 +1,30 @@
 from pelaaja import Pelaaja
 from huone import Huone
 from esine import Esine
-from talo import Talo
 import random
 import json
 import os
-
+import json
 
 p_nimi = input("kerro nimesi: ")
 ikä = int(input("kerro ikäsi: "))
+
+def tallennus():
+    tallennus_data = info()
+    #otetaan info funktiosta data
+    with open("saves.json", "w") as tiedosto:
+        json.dump(tallennus_data, tiedosto)
+        #ylikirjoittaa kaiken saves.json tiedostoon
+
+def load():
+    with open("saves.json", "r") as tiedosto:
+        data_luettu = json.load(tiedosto)
+    #luetaan data
+
+
+
+
+
 
 loot_pool = [
 Esine("kulta kello", 150, 2, 400),
@@ -56,7 +72,7 @@ A_sali.esine = random.choice(loot_pool)
 B_eteinen.esine = random.choice(loot_pool)
 B_olohuone.esine = random.choice(loot_pool)
 B_toimisto.esine = random.choice(loot_pool)
-B_kabinetti.esine = kulta_harkko
+B_kabinetti.esine = random.choice(loot_pool)
 
 #C siiven lootit
 C_eteinen.esine = random.choice(loot_pool)
@@ -69,6 +85,8 @@ C_makuuhuone.esine = random.choice(loot_pool)
 pelaaja = Pelaaja(p_nimi)
 #pelaajan nimi muuttuja lisätään Pelaaja luokkaan
 #pelaajalla on jo sijainti annettu parametrinä pelaaja luokassa
+
+
 
 def päävalikko():
     print(f"Tervetuloa {pelaaja.nimi} \n")
@@ -88,12 +106,6 @@ def komennot():
     print("ota esine")
     print("lopeta")
 
-def sammutus():
-    print("peli sammuu")
-
-def vanha_tulos():
-    print(info)
-
 def hälytys():
     x = sum(esine.paino for esine in pelaaja.tavaraluettelo)
     y = sum(esine.ääni for esine in pelaaja.tavaraluettelo)
@@ -101,32 +113,37 @@ def hälytys():
         return True
     else:
         return False
+    #lasketaan painon sekä äänen summat ja katsotaan ylittääkö tiettyä rajaa
 
-
-
-    return
-
+    
 def info():
     print("repun sisältö: \n")
+    e_p = sum(esine.paino for esine in pelaaja.tavaraluettelo)
+    e_ä = sum(esine.ääni for esine in pelaaja.tavaraluettelo)
+    tulos = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
+    
     if len(pelaaja.tavaraluettelo) == 0:
         print("et ole ottanut mitään")
         #katsotaan onko listassa mitään ja jos ei ole niin printataan se
     else:
         for esine in pelaaja.tavaraluettelo:
             print(esine.nimi)
-
         #luetellaan listan sisältö
-        e_p = sum(esine.paino for esine in pelaaja.tavaraluettelo)
-        e_ä = sum(esine.ääni for esine in pelaaja.tavaraluettelo)
-        print(f"{e_p} grammaa ja äänekkyys on {e_ä} /10 ")
-        #lasketaan yhteen esineiden paino ja ääni arvot
-    if game_over == True:
-        tulos = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
-        print(f"otit {tulos} euron edestä tavaraa")
-        #esineiden
-        return tulos
 
-game_over = False
+        #lasketaan yhteen esineiden paino ja ääni arvot
+        print(f"{e_p} grammaa ja äänekkyytesi on {e_ä}/10 ")
+
+
+        print(f"otit {tulos} euron edestä tavaraa")
+        #esineiden arvo euroina
+    return tulos, e_p, e_ä
+
+def eurot():
+    e = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
+    return e
+
+tulos, e_p, e_ä = data_luettu
+
 
 valikko = False
 #katsotaan ettei valikko avaudu ennen iän tarkistamista
@@ -141,7 +158,6 @@ else:
         päävalikko()
         komento = input("anna komento: ")
         if komento == "lopeta":
-            sammutus()
             break
         if komento == "komennot":
             komennot()
@@ -153,8 +169,10 @@ else:
         #pelin valikko sulkeutuu ja peli käynnistyy
 
 while game_running == True:
+    
     while pelaaja.sijainti == "ulkona":
-        print("tervetuloa pelaamaan Pvaras:ta")
+        print("tervetuloa pelaamaan Pvaras:ta \n")
+        print(f"viime kerralla sait {tulos}, sinun paino oli {round(e_p / 1000)}kg ja äänekkyytesi oli {e_ä}\n")
         print("olet ulkona ja edessäsi on suuri tiilistä noin vuonna 1960 rakennettu talo joka näyttää haarautuvan useisiin eri siipiin")
         alku = input("haluatko mennä sisälle? y/n: ")   
         if alku == "n":
@@ -165,7 +183,8 @@ while game_running == True:
             print(f"olet rakennuksen {pelaaja.sijainti.nimi}ssa. Edessä näkyy kolme siipeä, iso (A), keski (B) ja pieni (C)\n")
             print("valitse siipi mihin haluat mennä, A, B vai C? \n") 
             break   
-    komento2 = input("anna komento: \n")
+    komento2 = input("anna komento: ")
+    print("")
     
     #A siipi
     if komento2== "A" and pelaaja.sijainti == aula:
@@ -205,11 +224,15 @@ while game_running == True:
     elif komento2 == "liiku" and pelaaja.sijainti == B_toimisto:
         pelaaja.liiku(B_kabinetti)
         print("saavuit hienosti sisustettuun kabinettiin joka käy pienestä asunnosta")
-        print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+        kassa_k = input("huoneessa on kassakaappi, haluatko katsoa mitä sen sisällä on? y/n ")
 
-    elif komento2 == "liiku" and pelaaja.sijainti == B_toimisto:
-        print("saavuit hienosti sisustettuun kabinettiin joka käy pienestä asunnosta")
-        print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+        print(f"huoneessa on myös {pelaaja.sijainti.esine.nimi}")
+        if kassa_k == "y":
+            pelaaja.nappaa_esine(kulta_harkko)
+        elif kassa_k != "y":
+            print("jätit kassakaapin rauhaan")
+        print(f"huoneessa on myös {pelaaja.sijainti.esine.nimi}")
+        print("et voi enään tehdä kauheasti muuta kuin paeta(pakene)")
 
     #C siipi
     elif komento2 == "C":
@@ -228,62 +251,81 @@ while game_running == True:
         print("saavuit vanhan aikaiseen keittiöön")
         print("seuraavasta huoneesta kuuluu kuorsausta")
         print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
-
     elif komento2 == "liiku" and pelaaja.sijainti == C_keittiö:
         pelaaja.liiku(C_makuuhuone)
-
         print("huoneessa nukkuu vanha mummo")
         print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+        print("et voi enään tehdä kauheasti muuta kuin paeta(pakene)")
         #testaan onko paino tai äänekkyys arvot niin korkeat että ne herättäisivät mummon
 
-
-
     elif komento2 == "komennot":
-            komennot()
+        komennot()
         
-    elif komento2 == "ota" or "ota esine":
+    elif komento2 == "ota" or komento2 == "ota esine":
         if pelaaja.sijainti != "ulkona" and pelaaja.sijainti.esine is not None:
             #katsotaan ettei pelaaja ole ulkona ja jottei huoneen esinettä ole jo otettu
             napattu_esine = pelaaja.sijainti.esine
-    
             pelaaja.nappaa_esine(napattu_esine)
             #pelaaja luokasta olevalla funktiolla napattiin esine ja tallennettiin se tavaraluetteloon
-    
             pelaaja.sijainti.esine = None
             #poistetaan esine oton jälkeen
         else:
             print("et löydä mitään mitä voisit ottaa tai se on jo otettu")
 
     elif komento2 == "reppu":
-            info()  
+        info()  
     #loppu A
     elif komento2 == "pakene":
-        if pelaaja.sijainti == A_sali and len(pelaaja.tavaraluettelo) != 0:
+        if pelaaja.sijainti == A_sali and len(pelaaja.tavaraluettelo) != 0: 
             print("pelaajat huomasivat, että olit varastanut tavaraa heiltä joten he ottivat sinut kiinni ja soittivat poliisille\n")
             info()
+            tallennus()
+            #tallennetaan peli
             break
-        elif pelaaja.sijainti == B_kabinetti and len(pelaaja.tavaraluettelo) != 0:
-            print("")
+        elif pelaaja.sijainti == A_sali and len(pelaaja.tavaraluettelo) == 0: 
+            print("pelaajat huomasivat sinut ja mutta antoivat sinun mennä \n")
             info()
+            tallennus()
             break
-        elif pelaaja.sijainti == C_makuuhuone and hälytys == True:
-            print("herätit asukkaan koska reppusi oli joko liian raskas tai nostit liian äänekästä tavaraa")
+    
+    #loppu B
+        elif pelaaja.sijainti == B_kabinetti:
+            e = eurot()
+            #käytetään funktiota laskemaan eurot
+            print(f" sinä sait {e} euroa")
+            if e > 5000:
+                print("ohhoh tummoisen summan sait")
+                puut = input("haluatko käyttää sen istuttamaan puita? y/n")
+                if puut == ("n"):
+                    print("nauti varastamistasi rahoista")
+                    info()
+                    tallennus()
+                    break
+                elif puut == ("y"):
+                    print(f"rahasi auttoi istuttamaan {round(e / 2)} määrän puita")
+                    print("hieno homma, mutta vähintään ensikerralla hankkisit rahat laillisin keinoin")
+                    info()
+                    tallennus()
+                    break
+            elif e > 1:
+                print("säälittävä summa... oliko sen arvoista?")
+            elif e == 0:
+                print("sentään et varastanut mitään")
+            #katsotaan eri rahamääriä 
+
+            #tallennetaan peli
+            
+    #loppu C
+        elif pelaaja.sijainti == C_makuuhuone:
+            hälytys()
+            if hälytys():
+                print("herätit mummon ja hän soitti poliisin")
+                print("reppusi oli joko liian raskas tai olit liian äänekäs")
+                print("hävisit pelin ja et saanut mitään")
+            else:
+                print("toivottavasti et vienyt mitään ikäihmiseltä")
             info()
-            break       
-        game_over = True
-        break
-    elif hälytys == True:
-        print("herätit ")
-        game_over = True
-        info()
-        break
-      
-        #printataan kaikki tarvittavat tiedot ja jotta tulos toimisi niin game_over = True
+            tallennus()
+            break
 
 
-    """elif komento2 == "pakene":
-            game_over = True
-            info()
-            print("pakenit paikalta")
-            break
-            #printataan kaikki tarvittavat tiedot ja jotta tulos toimisi niin game_over = True"""
