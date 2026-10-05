@@ -3,13 +3,8 @@ from huone import Huone
 from esine import Esine
 import random
 
-
-#turha teksti git testi
-
-
 p_nimi = input("kerro nimesi: ")
 ikä = int(input("kerro ikäsi: "))
-
 
 lootti_lista = [
 Esine("kulta kello", 150, 2),
@@ -17,14 +12,13 @@ Esine("graniitti", 1500, 3),
 Esine("vanha kirja", 300, 1),
 Esine("lompakko", 400, 4),
 Esine("vanha TV", 30000, 4),
-Esine("lompakko")
-
+Esine("lompakko" 250, 4)
 ]
+
 #tehdään esineet joita talosta löytyy
 #paino grammoina
 kulta_harkko = Esine("kultaharkko", 2)
 #erikseen tehdään tietystä paikasta löytyvät esineet
-
 
 eteinen0 = Huone("eteinen")
 eteinen1 = Huone("Eteinen")
@@ -43,8 +37,6 @@ eteinen1.esine = random.choice(lootti_lista)
 pelaaja = Pelaaja(p_nimi)
 #pelaajan nimi muuttuja lisätään Pelaaja luokkaan
 #pelaajalla on jo sijainti annettu parametrinä pelaaja luokassa
-
-
 
 
 def päävalikko():
@@ -81,8 +73,6 @@ def info():
         print(sum(esine.paino for esine in pelaaja.tavaraluettelo))
         print(sum(esine.ääni for esine in pelaaja.tavaraluettelo))
 
-
-
 valikko = False
 #katsotaan ettei valikko avaudu ennen iän tarkistamista
 
@@ -108,11 +98,17 @@ else:
         #peli valikko sulkeutuu ja peli käynnistyy
 
 while game_running == True:
+    if pelaaja.sijainti == "ulkona":
+        talo = input(print(f"olet {pelaaja.sijainti.nimi} ja edessäsi on kolme taloa, iso, pieni ja keski, mihin niistä haluat tunkeutua? \n"))
+        print("tervetuloa pelaamaan Pvaras:ta")
+
     print("liiku, nappaa esine, reppu, pakene \n")
-    komento2 = input("mitäpä pitäisi tehdä? \n")
+
+
+    komento2 = input("mitä aiot tehdä? \n")
     if komento2 == "liiku":
 
-        if pelaaja.sijainti == "ulkona":
+        """if pelaaja.sijainti == "ulkona":
             pelaaja.liiku(eteinen0)
             print((f"saavuit huoneeseen {pelaaja.sijainti.nimi} ja huoneessa on {pelaaja.sijainti.esine.nimi}n\n"))
             print("")
@@ -122,7 +118,7 @@ while game_running == True:
             print((f"saavuit huoneeseen {pelaaja.sijainti.nimi} ja näät {pelaaja.sijainti.esine.nimi}n\n"))
 
         elif pelaaja.sijainti == makuuhuone:
-            print("viimeinen huone ja talon vanhat asukkaat heräävät kohta, voit ainoastaan paeta tai napata mitä voit")
+            print("viimeinen huone ja talon vanhat asukkaat heräävät kohta, voit ainoastaan paeta tai napata mitä voit")"""
 
     elif komento2 == "nappaa esine":
         if pelaaja.sijainti != "ulkona" and pelaaja.sijainti.esine is not None:
