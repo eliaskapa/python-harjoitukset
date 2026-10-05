@@ -14,13 +14,17 @@ def tallennus():
     with open("saves.json", "w") as tiedosto:
         json.dump(tallennus_data, tiedosto)
         #ylikirjoittaa kaiken saves.json tiedostoon
+
 def lataa():
     if os.path.exists("saves.json"):
-        with open("save.json", "r") as tiedosto:
+    #tarkastaa onko tiedostoa ennalta
+        with open("saves.json", "r") as tiedosto:
             data_luettu = json.load(tiedosto)
-        return data
+        return data_luettu
     return 0,0,0
+    #jotta ei tulisi ongelmia kun tiedosta ei ennalta
 
+tulos, e_p, e_ä = lataa()
 
 loot_pool = [
 Esine("kulta kello", 150, 2, 400),
@@ -138,7 +142,7 @@ def eurot():
     e = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
     return e
 
-tulos, e_p, e_ä = lataa()
+
 
 valikko = False
 #katsotaan ettei valikko avaudu ennen iän tarkistamista
@@ -167,7 +171,7 @@ while game_running == True:
     
     while pelaaja.sijainti == "ulkona":
         print("tervetuloa pelaamaan Pvaras:ta \n")
-        print(f"viime kerralla sait {tulos}, sinun paino oli {round(e_p / 1000)}kg ja äänekkyytesi oli {e_ä}\n")
+        print(f"viime kerralla sait {tulos} euroa, sinun tavaroidesi paino oli {round(e_p / 1000)}kg ja äänekkyytesi oli {e_ä}/10\n")
         print("olet ulkona ja edessäsi on suuri tiilistä noin vuonna 1960 rakennettu talo joka näyttää haarautuvan useisiin eri siipiin")
         alku = input("haluatko mennä sisälle? y/n: ")   
         if alku == "n":
@@ -273,14 +277,15 @@ while game_running == True:
     elif komento2 == "pakene":
         if pelaaja.sijainti == A_sali and len(pelaaja.tavaraluettelo) != 0: 
             print("pelaajat huomasivat, että olit varastanut tavaraa heiltä joten he ottivat sinut kiinni ja soittivat poliisille\n")
-            info()
             tallennus()
             #tallennetaan peli
+            print("peli loppu")
             break
         elif pelaaja.sijainti == A_sali and len(pelaaja.tavaraluettelo) == 0: 
-            print("pelaajat huomasivat sinut ja mutta antoivat sinun mennä \n")
-            info()
+            print("pelaajat huomasivat sinut ja hämmästelivät, kuka olet ja mitä teet?  \n")
             tallennus()
+            print("hyvä ettet varastanut mitään")
+            print("peli loppu")
             break
     
     #loppu B
@@ -293,24 +298,24 @@ while game_running == True:
                 puut = input("haluatko käyttää sen istuttamaan puita? y/n")
                 if puut == ("n"):
                     print("nauti varastamistasi rahoista")
-                    info()
                     tallennus()
+                    print("peli loppu")
                     break
                 elif puut == ("y"):
                     print(f"rahasi auttoi istuttamaan {round(e / 2)} määrän puita")
                     print("hieno homma, mutta vähintään ensikerralla hankkisit rahat laillisin keinoin")
-                    info()
                     tallennus()
+                    print("peli loppu")
                     break
             elif e > 1:
                 print("säälittävä summa... oliko sen arvoista?")
-                info()
                 tallennus()
+                print("peli loppu")
                 break
             elif e == 0:
                 print("sentään et varastanut mitään")
-                info()
                 tallennus()
+                print("peli loppu")
                 break
             #katsotaan eri rahamääriä 
 
@@ -327,6 +332,7 @@ while game_running == True:
                 print("toivottavasti et vienyt mitään ikäihmiseltä")
             info()
             tallennus()
+            print("peli loppu")
             break
 
 
