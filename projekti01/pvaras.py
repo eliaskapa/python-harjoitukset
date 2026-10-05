@@ -4,7 +4,6 @@ from esine import Esine
 import random
 import json
 import os
-import json
 
 p_nimi = input("kerro nimesi: ")
 ikä = int(input("kerro ikäsi: "))
@@ -15,15 +14,12 @@ def tallennus():
     with open("saves.json", "w") as tiedosto:
         json.dump(tallennus_data, tiedosto)
         #ylikirjoittaa kaiken saves.json tiedostoon
-
-def load():
-    with open("saves.json", "r") as tiedosto:
-        data_luettu = json.load(tiedosto)
-    #luetaan data
-
-
-
-
+def lataa():
+    if os.path.exists("saves.json"):
+        with open("save.json", "r") as tiedosto:
+            data_luettu = json.load(tiedosto)
+        return data
+    return 0,0,0
 
 
 loot_pool = [
@@ -142,8 +138,7 @@ def eurot():
     e = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
     return e
 
-tulos, e_p, e_ä = data_luettu
-
+tulos, e_p, e_ä = lataa()
 
 valikko = False
 #katsotaan ettei valikko avaudu ennen iän tarkistamista
@@ -309,8 +304,14 @@ while game_running == True:
                     break
             elif e > 1:
                 print("säälittävä summa... oliko sen arvoista?")
+                info()
+                tallennus()
+                break
             elif e == 0:
                 print("sentään et varastanut mitään")
+                info()
+                tallennus()
+                break
             #katsotaan eri rahamääriä 
 
             #tallennetaan peli
