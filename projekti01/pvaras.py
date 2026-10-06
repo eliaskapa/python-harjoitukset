@@ -22,7 +22,7 @@ def lataa():
             data_luettu = json.load(tiedosto)
         return data_luettu
     return 0,0,0
-    #jotta ei tulisi ongelmia kun tiedosta ei ennalta
+    #jotta ei tulisi ongelmia jos tiedostoa ei ole ennalta
 
 tulos, e_p, e_ä = lataa()
 
@@ -37,8 +37,8 @@ Esine("läppäri", random.randint(1200,2500), random.randint(1,3), random.randin
 Esine("laskin", 150, 1, random.randint(5,80))
 ]
 
-#tehdään esineet joita rakennuksesta löytyy
-#paino grammoina, äänekkys ja lopussa hinta euroina
+#esineet jotkarakennuksesta löytyy
+#paino grammoina, äänekkys ja lopuksi hinta euroina
 
 kulta_harkko = Esine("kultaharkko", 250, 3, 30000)
 kengät = Esine("kengät", 250, 2, 20)
@@ -86,8 +86,6 @@ pelaaja = Pelaaja(p_nimi)
 #pelaajan nimi muuttuja lisätään Pelaaja luokkaan
 #pelaajalla on jo sijainti annettu parametrinä pelaaja luokassa
 
-
-
 def päävalikko():
     print(f"Tervetuloa {pelaaja.nimi} \n")
     print(" päävalikko:")
@@ -114,17 +112,16 @@ def hälytys():
     else:
         return False
     #lasketaan painon sekä äänen summat ja katsotaan ylittääkö tiettyä rajaa
-
     
 def info():
     print("repun sisältö: \n")
     e_p = sum(esine.paino for esine in pelaaja.tavaraluettelo)
     e_ä = sum(esine.ääni for esine in pelaaja.tavaraluettelo)
     tulos = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
-    
+    #pelaajan nostamien esineiden yhteiset arvot summana
     if len(pelaaja.tavaraluettelo) == 0:
         print("et ole ottanut mitään")
-        #katsotaan onko listassa mitään ja jos ei ole niin printataan se
+        #katsotaan onko listassa mitään
     else:
         for esine in pelaaja.tavaraluettelo:
             print(esine.nimi)
@@ -133,7 +130,6 @@ def info():
         #lasketaan yhteen esineiden paino ja ääni arvot
         print(f"{e_p} grammaa ja äänekkyytesi on {e_ä}/10 ")
 
-
         print(f"otit {tulos} euron edestä tavaraa")
         #esineiden arvo euroina
     return tulos, e_p, e_ä
@@ -141,8 +137,6 @@ def info():
 def eurot():
     e = sum(esine.arvo for esine in pelaaja.tavaraluettelo)
     return e
-
-
 
 valikko = False
 #katsotaan ettei valikko avaudu ennen iän tarkistamista
@@ -168,10 +162,11 @@ else:
         #pelin valikko sulkeutuu ja peli käynnistyy
 
 while game_running == True:
-    
     while pelaaja.sijainti == "ulkona":
+        #ulkona on parametreissä päätetty sijainti
         print("tervetuloa pelaamaan Pvaras:ta \n")
         print(f"viime kerralla sait {tulos} euroa, sinun tavaroidesi paino oli {round(e_p / 1000)}kg ja äänekkyytesi oli {e_ä}/10\n")
+        #viime matsin tulos
         print("olet ulkona ja edessäsi on suuri tiilistä noin vuonna 1960 rakennettu talo joka näyttää haarautuvan useisiin eri siipiin")
         alku = input("haluatko mennä sisälle? y/n: ")   
         if alku == "n":
@@ -191,7 +186,7 @@ while game_running == True:
         print("saavuit A siipeen ja edessäsi on suuri aukea eteinen")
         print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
         print("joko liiku, ota esine, reppu, pakene tai kysy komennot \n")
-
+    #jos pelaaja on tietyssä paikassa hän voi ainoastaan liikkua enlalta päätettyyn paikaan ja ilmoitetaan pelaajalle mitä huoneessa on. 
     elif komento2 == "liiku" and pelaaja.sijainti == A_eteinen:
         pelaaja.liiku(A_pukuhuone)
         print("saavuit pukuhuoneeseen jossa on paljon vaatteita")
@@ -317,10 +312,7 @@ while game_running == True:
                 tallennus()
                 print("peli loppu")
                 break
-            #katsotaan eri rahamääriä 
-
-            #tallennetaan peli
-            
+           
     #loppu C
         elif pelaaja.sijainti == C_makuuhuone:
             hälytys()
