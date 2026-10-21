@@ -140,13 +140,13 @@ def eurot():
 
 valikko = False
 #katsotaan ettei valikko avaudu ennen iän tarkistamista
+game_running = False
 
 if ikä <= 12:
     print("alaikä ban")
 
 else:
     valikko = True
-    game_running = False
     while valikko == True:
         päävalikko()
         komento = input("anna komento: ")
@@ -169,17 +169,24 @@ while game_running == True:
         #viime matsin tulos
         print("olet ulkona ja edessäsi on suuri tiilistä noin vuonna 1960 rakennettu talo joka näyttää haarautuvan useisiin eri siipiin")
         alku = input("haluatko mennä sisälle? y/n: ")   
+        #jos et halua mennä sisään peli sulkeutuu
         if alku == "n":
             print("ehkä tämä on kaikille parhaaksi")
+            game_running = False
             break
+            #jos haluat peli siirtää sinut ensimmäiseen huoneeseen
         elif alku == "y":
             pelaaja.liiku(aula)
             print(f"olet rakennuksen {pelaaja.sijainti.nimi}ssa. Edessä näkyy kolme siipeä, iso (A), keski (B) ja pieni (C)\n")
             print("valitse siipi mihin haluat mennä, A, B vai C? \n") 
-            break   
+
+    if game_running == False:
+        break    
+        #lisä sulkeutuminen
+    print("")
     komento2 = input("anna komento: ")
     print("")
-    
+
     #A siipi
     if komento2== "A" and pelaaja.sijainti == aula:
         pelaaja.liiku(A_eteinen)
@@ -191,12 +198,12 @@ while game_running == True:
         pelaaja.liiku(A_pukuhuone)
         print("saavuit pukuhuoneeseen jossa on paljon vaatteita")
         print("seuraavassa huoneessa kuuluu paljon ääntä ja mekkalaa")
-        print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+        print(f"huoneessa on {pelaaja.sijainti.esine.nimi}\n")
 
     elif komento2 == "liiku" and pelaaja.sijainti == A_pukuhuone:
         pelaaja.liiku(A_sali)
         print("liikuntasalissa on ainakin 15 ihmistä pelaamassa koripalloa ja he huomasivat sinut")
-        print("ainoa vaihtoehtosi on paeta (pakene)")
+        print("ainoa vaihtoehtosi on paeta (pakene)\n")
             
     #B siipi
     elif komento2 == "B":
@@ -219,20 +226,19 @@ while game_running == True:
         pelaaja.liiku(B_kabinetti)
         print("saavuit hienosti sisustettuun kabinettiin joka käy pienestä asunnosta")
         kassa_k = input("huoneessa on kassakaappi, haluatko katsoa mitä sen sisällä on? y/n ")
-
-        print(f"huoneessa on myös {pelaaja.sijainti.esine.nimi}")
+        print(f"huoneessa on myös {pelaaja.sijainti.esine.nimi}\n")
         if kassa_k == "y":
             pelaaja.nappaa_esine(kulta_harkko)
         elif kassa_k != "y":
             print("jätit kassakaapin rauhaan")
-        print(f"huoneessa on myös {pelaaja.sijainti.esine.nimi}")
-        print("et voi enään tehdä kauheasti muuta kuin paeta(pakene)")
+        print(f"huoneessa on myös {pelaaja.sijainti.esine.nimi}\n")
+        print("et voi enään tehdä kauheasti muuta kuin paeta(pakene)\n")
 
     #C siipi
     elif komento2 == "C":
         pelaaja.liiku(C_eteinen)
         print("saavuit C siipeen ja edessäsi on pieni eteinen")
-        print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
+        print(f"huoneessa on {pelaaja.sijainti.esine.nimi}\n")
         print("joko liiku, ota esine, reppu, pakene tai kysy komennot \n")
 
     elif komento2 == "liiku" and pelaaja.sijainti == C_eteinen:
@@ -243,7 +249,7 @@ while game_running == True:
     elif komento2 == "liiku" and pelaaja.sijainti == C_olohuone:
         pelaaja.liiku(C_keittiö)
         print("saavuit vanhan aikaiseen keittiöön")
-        print("seuraavasta huoneesta kuuluu kuorsausta")
+        print("seuraavasta huoneesta kuuluu kuorsausta\n")
         print(f"huoneessa on {pelaaja.sijainti.esine.nimi}")
     elif komento2 == "liiku" and pelaaja.sijainti == C_keittiö:
         pelaaja.liiku(C_makuuhuone)
