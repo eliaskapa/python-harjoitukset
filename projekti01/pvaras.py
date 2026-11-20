@@ -112,7 +112,11 @@ def hälytys():
     else:
         return False
     #lasketaan painon sekä äänen summat ja katsotaan ylittääkö tiettyä rajaa
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
 def info():
     print("repun sisältö: \n")
     e_p = sum(esine.paino for esine in pelaaja.tavaraluettelo)
@@ -296,14 +300,14 @@ while game_running == True:
             print(f" sinä sait {e} euroa")
             if e > 5000:
                 print("ohhoh tummoisen summan sait")
-                puut = input("haluatko käyttää sen istuttamaan puita? y/n")
+                puut = input("haluatko käyttää sen istuttamaan puita? y/n ")
                 if puut == ("n"):
                     print("nauti varastamistasi rahoista")
                     tallennus()
                     print("peli loppu")
                     break
                 elif puut == ("y"):
-                    print(f"rahasi auttoi istuttamaan {round(e / 2)} määrän puita")
+                    print(f"rahasi auttoi istuttamaan {round(e / 2)} puuta")
                     print("hieno homma, mutta vähintään ensikerralla hankkisit rahat laillisin keinoin")
                     tallennus()
                     print("peli loppu")
